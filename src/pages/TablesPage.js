@@ -106,8 +106,7 @@ const TablesPage = () => {
           data={students}
           title="Estudiantes"
           options={{
-            search: true,
-            //searchFieldStyle: { display: "none" },
+            searchFieldStyle: { display: "none" },
             headerStyle: { fontWeight: "bold" },
             pageSizeOptions: [],
             emptyRowsWhenPaging: false,

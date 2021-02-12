@@ -155,3 +155,15 @@ export const getTutorTutorings = (tutorID, func) => {
 export const updateTutoring = async (tutoringID, newData) => {
   await db.collection("tutorings").doc(tutoringID).update(newData);
 };
+
+// Obtener todos los estudiantes
+export const getStudents = (func) => {
+  return db.collection("students").onSnapshot((snapshot) => {
+    const students = snapshot.docs.map((doc) => {
+      const student = doc.data();
+      return student;
+    })
+
+    func(students);
+  })
+}
