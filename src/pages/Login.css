@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
+body {
+	margin: 0;
+	padding: 0;
+	background-color: #faf3f0;
+}
+
+p {
+	font-family: 'Quicksand';
+}
+/* Contenedor de los cuadros de texto */
+.cInputs {
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 10%;
+}
+/* Contenedor de botón que lleva a la página del registro*/
+.clSignUp {
+	text-align: center;
+	padding-top: 10pt;
+	padding-bottom: 10pt;
+}
+
+/*Botón que lleva a la página del registro*/
+.lSignUp {
+	text-decoration: none;
+	color: #475694;
+}
+
+.lSignUp:hover {
+	text-decoration: underline;
+	color: #232b4a;
+}
+
+/* Imagen logo */
+.imgLogo {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+/* Contenedor del botón de ingresar */
+.bLogin {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/* Computadores o dispositivos mayores a 600px */
+@media screen and (min-width: 600px) {
+	/* Fondo de la pantalla */
+	.cBackgroundLogin {
+		background-image: url('../assets/background-login.svg');
+		background-repeat: no-repeat;
+		padding-top: 5%;
+		padding-bottom: 5%;
+	}
+
+	/* Contenedor del Login */
+	.cLogin {
+		margin-right: auto;
+		margin-left: auto;
+		width: 400px;
+		background-color: #faf3f0;
+		border-radius: 10pt;
+		-webkit-box-shadow: 3px 3px 3px #3c3b3e;
+		-moz-box-shadow: 3px 3px 3px #3c3b3e;
+		box-shadow: 3px 3px 3px #3c3b3e;
+	}
+
+	/* Contenedor de la imagen del logo */
+	.cHeader {
+		background-color: #ffe4d4;
+		max-width: 100%;
+		max-height: 200px;
+		border-top-right-radius: 10pt;
+		border-top-left-radius: 10pt;
+	}
+
+	/* Contenedor de ambos cuadros de texto */
+	.cInputs {
+		max-width: 320px;
+	}
+
+	/* Contenedor de cada uno de los text fields */
+	.tfMail,
+	.tfPassword {
+		margin-top: 10%;
+	}
+
+	/* Contenedor del boton para ingresar */
+	.bLogin {
+		max-width: 200px;
+		justify-content: center;
+	}
+}
+
+/* Telefonos */
+@media only screen and (max-width: 600px) {
+	/* Fondo de la pantalla */
+	.cBackgroundLogin {
+		padding-bottom: 5%;
+	}
+
+	/* Contenedor de la imagen del logo */
+	.cHeader {
+		background-color: #ffe4d4;
+		max-width: 100%;
+		align-content: center;
+	}
+
+	/* Contenedor de ambos cuadros de texto */
+	.cInputs {
+		max-width: 320px;
+		padding-top: 5vh;
+		padding-left: 2vh;
+		padding-right: 2vh;
+	}
+
+	/* Contenedor de cada textfield */
+	.tfMail,
+	.tfPassword {
+		margin-top: 5vh;
+		margin-bottom: 8vh;
+	}
+
+	/* Contenedor del boton */
+	.bLogin {
+		margin-top: 10vh;
+		max-width: 250px;
+		padding-left: 2vh;
+		padding-right: 2vh;
+	}
+}
+
+@media only screen and (max-height: 500px) {
+	.cBackgroundLogin {
+		background-size: cover;
+		background-attachment: fixed;
+		width: 100%;
+		height: 100%;
+	}
+}
+@media only screen and (min-height: 500px) {
+	/* Fondo de la pantalla */
+	.cBackgroundLogin {
+		position: fixed;
+		background-size: cover;
+		width: 100%;
+		height: 100%;
+	}
+}

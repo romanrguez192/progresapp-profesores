@@ -1,0 +1,48 @@
+/* PC */
+@media screen and (min-width: 600px) {
+  .titulo {
+    font-size: 15pt;
+    text-decoration: none;
+    color: #faf3f0;
+  }
+
+  .drawerContainer {
+    width: 25vw;
+    height: 100%;
+    margin: 10pt;
+  }
+
+  .cDrawerBottom {
+    position: absolute;
+    bottom: 0px;
+    width: 25vw;
+  }
+
+  .separador1 {
+    width: 100vw;
+  }
+}
+
+/* Telefonos */
+@media only screen and (max-width: 600px) {
+  .titulo {
+    font-size: 0pt;
+    text-decoration: none;
+  }
+
+  .cDrawerBottom {
+    position: absolute;
+    bottom: 0px;
+    width: 70vw;
+  }
+
+  .drawerContainer {
+    width: 70vw;
+    height: 100%;
+    margin: 10pt;
+  }
+
+  .separador1 {
+    width: 100vw;
+  }
+}

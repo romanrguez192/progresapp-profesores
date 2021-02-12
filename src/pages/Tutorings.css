@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@700&display=swap');
+
+/* Contenedor de la pantalla de tutorias */
+.cBackgroundTutoring {
+	height: 100%;
+	text-align: center;
+	justify-content: center;
+	align-content: center;
+	align-items: center;
+}
+
+/* Estilo del titulo */
+.cTitleTutoring {
+	padding-top: 0pt;
+}
+
+/* Estilo del texto del título tutoría*/
+.cTitleTutoring h1 {
+	font-family: 'Quicksand';
+	color: #3c3b3e;
+	font-weight: bold;
+}
+
+/* Pantalla computadores*/
+@media screen and (min-width: 600px) {
+	/* Estilo del contenedor de la lista de tutorias */
+	.cListTutoring,
+	.divTutoring {
+		margin-left: auto;
+		margin-right: auto;
+		padding-left: 5%;
+		padding-right: 5%;
+		max-width: 800px;
+	}
+	.cTitleTutoring h1 {
+		font-size: 30pt;
+	}
+
+	/* Estilo del contenedor de la linea divisora */
+	.divTutoring {
+		padding: 5vh;
+	}
+}
+
+/* Pantalla de teléfonos */
+@media only screen and (max-width: 600px) {
+	/* Estilo del contenedor de la lista de tutorias */
+	.cListTutoring {
+		padding-left: 5vw;
+		padding-right: 5vw;
+	}
+
+	.cTitleTutoring h1 {
+		font-size: 25pt;
+	}
+
+	/* Estilo del contenedor de la linea divisora */
+	.divTutoring {
+		padding: 2vh;
+	}
+}

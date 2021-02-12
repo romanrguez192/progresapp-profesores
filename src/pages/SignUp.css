@@ -1,0 +1,165 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@700&display=swap');
+/* Fondo de la pantalla */
+.cBackgroundSignUp {
+	background-size: cover;
+	background-attachment: fixed;
+	width: 100%;
+	height: 100%;
+}
+
+/* Contenedor del header */
+.cHeader {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+/* Contenedor del mensaje de regístrate */
+.hSignUp h1 {
+	margin-left: 15px;
+	font-family: 'QuickSand';
+	text-align: center;
+	color: #3c3b3e;
+}
+
+/* Contenedor de los inputs de texto*/
+.cTextFields {
+	max-width: 450px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+/* Cada uno de los cuadros de texto */
+.tfInfo {
+	margin-top: 15px;
+}
+
+/* Contenedor del botón para registrarse*/
+.bSignUp {
+	max-width: 200px;
+	margin-left: auto;
+	margin-right: auto;
+	padding-top: 20pt;
+	padding-bottom: 10pt;
+}
+
+/* Contenedor del link que lleva al login */
+.clLogin {
+	text-align: center;
+	padding-bottom: 10pt;
+}
+
+/* Link que lleva al login*/
+.lLogin {
+	text-decoration: none;
+	color: #475694;
+}
+
+.lLogin:hover {
+	text-decoration: underline;
+	color: #232b4a;
+}
+
+/* Computador*/
+@media screen and (min-width: 600px) {
+	/* Fondo de la pantalla */
+	.cBackgroundSignUp {
+		background-image: url('../assets/background-login.svg');
+		background-repeat: no-repeat;
+		padding-top: 5%;
+		padding-bottom: 5%;
+	}
+
+	/* Contenedor del Login */
+	.cSignUp {
+		margin-right: auto;
+		margin-left: auto;
+		width: 500px;
+		background-color: #faf3f0;
+		border-radius: 10pt;
+		-webkit-box-shadow: 3px 3px 3px #3c3b3e;
+		-moz-box-shadow: 3px 3px 3px #3c3b3e;
+		box-shadow: 3px 3px 3px #3c3b3e;
+	}
+	/* Contenedor del logo*/
+	.iLogo img {
+		max-width: 90px;
+		height: 90px;
+	}
+	/* Contenedor del mensaje de regístrate */
+	.hSignUp h1 {
+		font-size: 2.4em;
+		max-width: 250px;
+	}
+
+	/* Contenedor de Nombre y cédula*/
+	.cNameAndId {
+		display: flex;
+		margin-top: 15px;
+	}
+
+	/* Cada input de nombre y cedula */
+	.tfName,
+	.tfId {
+		min-width: 220px;
+	}
+
+	/* Input de cédula*/
+	.tfId {
+		margin-left: 10px;
+	}
+}
+
+/* Pantalla de teléfonos */
+@media only screen and (max-width: 600px) {
+	/* Contenedor del mensaje de regístrate */
+	.hSignUp h1 {
+		font-size: 30px;
+		max-width: 200px;
+	}
+
+	.cBackgroundSignUp .cHeader {
+		height: 180px;
+	}
+
+	/* Contenedor del logo*/
+	.iLogo img {
+		max-width: 80px;
+	}
+
+	/* Cada input de nombre y cedula */
+	.tfName,
+	.tfId {
+		margin-top: 15px;
+		margin-left: 12px;
+		margin-right: 12px;
+	}
+
+	/* Cada uno de los cuadros de texto */
+	.tfInfo {
+		margin-left: 12px;
+		margin-right: 12px;
+	}
+}
+
+@media only screen and (max-width: 270px) {
+	/* Contenedor del mensaje de regístrate */
+	.hSignUp h1 {
+		font-size: 18px;
+	}
+
+	/* Contenedor del logo*/
+	.iLogo img {
+		max-width: 55px;
+	}
+
+	.cBackgroundSignUp .cHeader {
+		height: 100px;
+	}
+}
+
+@media only screen and (min-height: 800px) {
+	.cBackgroundSignUp {
+		position: absolute;
+	}
+}

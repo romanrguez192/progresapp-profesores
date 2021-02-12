@@ -1,0 +1,20 @@
+.cInputCreate {
+	padding-top: 6px;
+	padding-bottom: 6px;
+}
+
+.cCreateT {
+	text-align: left;
+}
+
+.cBCreateTutoring,
+.cBCancelTutoring {
+	font-size: 12pt;
+	padding-top: 12px;
+	margin: auto;
+	max-width: 300px;
+}
+
+.cBCancelTutoring {
+	padding-bottom: 15px;
+}

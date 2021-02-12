@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@700&display=swap');
+
+.cBackgroundTutoringDetail {
+	height: 100%;
+	text-align: center;
+	justify-content: center;
+	align-content: center;
+	align-items: center;
+	padding-top: 20pt;
+}
+.pTitlesTutoring p {
+	margin-top: 0px;
+	margin-bottom: 20px;
+}
+
+.cBackgroundTutoringDetail a {
+	font-family: 'Quicksand';
+	text-decoration: none;
+	color: #3c3b3e;
+}
+
+.nTutoring {
+	font-weight: bold;
+	text-overflow: ellipsis;
+}
+
+.cInfoTutoring {
+	overflow-wrap: break-word;
+}
+
+/* PC */
+@media screen and (min-width: 600px) {
+	.cInfoTutoring {
+		margin-left: auto;
+		margin-right: auto;
+		padding-left: 5%;
+		padding-right: 5%;
+		max-width: 800px;
+	}
+	.nTutoring {
+		font-size: 30pt;
+	}
+
+	.nTutor {
+		font-size: 20pt;
+	}
+}
+
+/* Telefonos */
+@media only screen and (max-width: 600px) {
+	.cInfoTutoring {
+		padding-left: 5vw;
+		padding-right: 5vw;
+	}
+	.nTutoring {
+		font-size: 25pt;
+		margin-left: 10px;
+		margin-right: 10px;
+		max-width: 580px;
+	}
+
+	.nTutor {
+		font-size: 20pt;
+	}
+}
