@@ -51,8 +51,9 @@ const Home = () => {
       {!loading && !tutorings.length && (
         <div className="cHomeMssg">
           <p>
-            Todavía no te has inscrito en ninguna tutoría. ¡Ve a{" "}
-            <em>Buscar Tutorías</em> para inscribirte en una!
+            Bienvenido a ProgresApp Profesores, ¡Ve a{" "}
+            <b>Buscar Tutorías</b> para ver las tutorías y a{""} 
+            <b> Lista de Estudiantes</b> para designar un tutor!
           </p>
         </div>
       )}
