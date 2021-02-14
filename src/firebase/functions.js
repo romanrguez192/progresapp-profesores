@@ -215,4 +215,19 @@ export const toggleIsTutor = async (student) => {
   const isTutor = !student.isTutor;
 
   await db.collection("students").doc(student.uid).update({ isTutor });
+
+  const notification = {
+    title: isTutor ? "Eres tutor" : "Ya no eres tutor",
+    message: isTutor
+      ? "Fuiste asignado como tutor"
+      : "Fuiste desasignado como tutor",
+    date: new Date(),
+    read: false,
+  };
+
+  await db
+    .collection("students")
+    .doc(student.uid)
+    .collection("notifications")
+    .add(notification);
 };
