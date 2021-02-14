@@ -1637,6 +1637,406 @@ export const degrees = [
       },
     ],
   },
+  {
+    id: "eduacion",
+    name: "Educación",
+    subjects: [
+      {
+        id:  "sist_edu_vzl",
+        name: "Sistema Educativo Venezolano",
+      },
+      {
+        id: "psicologia_gral",
+        name: "Psicología General",
+      },
+      {
+        id: "liderazgo1",
+        name: "Identidad, Liderazgo y Compromiso I",
+      },
+      {
+        id: "aritmetica1",
+        name: "Arimética I",
+      },
+      {
+        id: "fun_cul_vzla",
+        name: "Fundamentos de la Cultura Venezolana",
+      },
+      {
+        id: "act_ludica",
+        name: "El niño y la Actividad Lúdica",
+      },
+      {
+        id: "comp_txt_eng",
+        name: "Comprensión de Textos en Inglés",
+      },
+      {
+        id: "comprension",
+        name: "Comprensión y Producción de Textos",
+      },
+      {
+        id: "desarollo_humano",
+        name: "Desarrollo Humano",
+      },
+      {
+        id: "socio_educ",
+        name : "Socioogía de la Educación",
+      },
+      {
+        id: "liderazgo2",
+        name: "Identidad, Liderazgo y Compromiso II",
+      },
+      {
+        id: "aritmetica2",
+        name: "Aritmética II",
+      },
+      {
+        id: "pract_obs",
+        name: "Práctica de Observación",
+      },
+      {
+        id: "lengua_esp",
+        name: "Lengua Española",
+      },
+      {
+        id: "estad1_adm",
+        name: "Estadística I",
+      },
+      {
+        id: "prod_txt_eng",
+        name: "Producción de Textos en Inglés",
+      },
+      {
+        id: "tort_mod_aprendizaje",
+        name: "Teortías y Modelos del Aprendizaje",
+      },
+      {
+        id: "manejo_med_dig",
+        name : "Manejo de Medios Digitales",
+      },
+      {
+        id: "prac_ens_pedago",
+        name: "Práctica, Enseñanza y Pedagogía",
+      },
+      {
+        id: "educ_salud",
+        name: "Educación para la Salud",
+      },
+      {
+        id: "lect_esc1",
+        name: "Enseñanza de la Lectura y Escritura I",
+      },
+      {
+        id: "estad2",
+        name: "Estadística II",
+      },
+      {
+        id: "prod_med_dig",
+        name: "Producción de Medios Digitales",
+      },
+      {
+        id: "cie_natural1",
+        name: "Ciencias Naturales I",
+      },
+      {
+        id: "lect_esc2",
+        name: "Enseñanza de la Lengua y la Escritura II",
+      },
+      {
+        id: "ens_lengua1",
+        name: "Enseñanza de la Lengua I",
+      },
+      {
+        id: "geom",
+        name: "Geometría",
+      },
+      {
+        id: "prac_uni_clas",
+        name: "Práctica Unidades de Clase",
+      },
+      {
+        id: "pedag_soc_ap",
+        name: "Pedagogía Social y Aprendizaje en Servicio",
+      },
+      {
+        id: "ges_ent_virt",
+        name: "Gestión de Entornos Virtuales",
+      },
+      {
+        id: "ev_apren",
+        name: "Evaluación de los Aprendizajes",
+      },
+      {
+        id: "pract_uni_int",
+        name: "Práctica Unidades Integradoras",
+      },
+      {
+        id: "cie_natural2",
+        name: "Ciencias Naturales II",
+      },
+      {
+        id: "ens_lengua2",
+        name: "Enseñanza de la Lengua II",
+      },
+      {
+        id: "cien_soc",
+        name: "Ciencias Sociales",
+      },
+      {
+        id: "lit_inf_juv",
+        name: "Literatura Infantil y Juvenil",
+      },
+      {
+        id: "asesoramiento",
+        name: "Asesoramiento",
+      },
+      {
+        id: "fil_educ",
+        name: "Filosofía de la Educación",
+      },
+      {
+        id: "prac_pro_apre",
+        name: "Práctica Proyecto de Aprendizaje",
+      },
+      {
+        id: "educ_ciud",
+        name: "Educación para la Ciudadanía",
+      },
+      {
+        id: "geo_vzla1",
+        name: "Geografía de Venezuela I",
+      },
+      {
+        id: "discapacidad",
+        name: "Prevención y Atención Temprana de la Discapacidad",
+      },
+      {
+        id: "hist_unv",
+        name: "Historia Universal",
+      },
+      {
+        id: "inv_educ1",
+        name: "Investigación Educativa I",
+      },
+      {
+        id: "pract_amb_noc",
+        name: "Prácticas de Ambientes No Convencionales",
+      },
+      {
+        id: "ecologia",
+        name: "Ecología, Ambiente y Sustentabilidad",
+      },
+      {
+        id: "hist_vzla1",
+        name: "Historia de Venezuela I",
+      },
+      {
+        id: "geo_vzla2",
+        name: "Geografía de Venezuela II",
+      },
+      {
+        id: "educ_est",
+        name: "Educación Estética",
+      },
+      {
+        id: "estra_div",
+        name: "Estrategias para la Diversidad",
+      },
+      {
+        id: "etica_educ",
+        name: "Ética",
+      },
+      {
+        id: "inv_educ2",
+        name: "Investigación Educativa II",
+      },
+      {
+        id: "ges_inst_educ",
+        name: "Gestión de Instituciones Educativas",
+      },
+      {
+        id: "hist_vzla2",
+        name: "Historia de Venezuela II",
+      },
+      {
+        id: "proy_emp_edu",
+        name: "Proyecto Emprendimiento Educativo",
+      },
+      {
+        id: "didac_adu_sig",
+        name: "Didáctica de los Adultos Significativos",
+      }
+    ]
+  },
+  {
+    id: "comunicacion_soc",
+    name: "Comunicación Social",
+    subjects: [
+      {
+        id: "comprension",
+        name: "Comprensión y Producción de Textos",
+      },
+      {
+        id: "fund_gram",
+        name: "Fundamentos de Gramática",
+      },
+      {
+        id: "teoria_com",
+        name: "Teoría de la Comunicación",
+      },
+      {
+        id: "com_oral",
+        name: "Comunicación Oral"
+      },
+      {
+        id: "teo_prac_arg",
+        name: "Teoría y Práctica de la Argumentación"
+      },
+      {
+        id: "cult_premo",
+        name: "Cultura y Premodernidad"
+      },
+      {
+        id: "comu_esc",
+        name: "Comunicación Escrita",
+      },
+      {
+        id: "lit_comun",
+        name: "Literatura y Comunicación"
+      },
+      {
+        id: "cult_mod",
+        name: "Cultura y Modernidad",
+      },
+      {
+        id: "socio_pol",
+        name: "Sociología Política",
+      },
+      {
+        id: "psico_soc",
+        name: "Psicología Social"
+      },
+      {
+        id: "liderazgo1",
+        name: "Identidad, Liderazgo y Compromiso I",
+      },
+      {
+        id: "comp_txt_eng",
+        name: "Comprensión de Textos en Inglés",
+      },
+      {
+        id: "art_comun",
+        name: "Arte y Comunicación",
+      },
+      {
+        id: "prod_cont_med1",
+        name: "Producción de Contenidos para Medios I"
+      },
+      {
+        id: "socio_comu",
+        name: "Sociología de la Comunicación",
+      },
+      {
+        id: "economia_comun",
+        name: "Economía",
+      },
+      {
+        id: "cult_pos",
+        name: "Cultura y Posmodernidad",
+      },
+      {
+        id: "liderazgo2",
+        name: "Identidad, Liderazgo y Compromiso II",
+      },
+      {
+        id: "prod_cont_eng",
+        name: "Producción de Contenidos en Inglés"
+      },
+      {
+        id: "comun_graf",
+        name: "Comunicación Gráfica",
+      },
+      {
+        id: "prod_cont_med2",
+        name: "Producción de Contenidos para Medios II",
+      },
+      {
+        id: "op_public",
+        name: "Opinión Pública",
+      },
+      {
+        id: "mercadeo",
+        name: "Mercadeo",
+      },
+      {
+        id: "hist_vzla_med1",
+        name: "Historia de Venezuela en los Medios I",
+      },
+      {
+        id: "ecologia",
+        name: "Ecología, Ambiente y Sustentabilidad",
+      },
+      {
+        id: "estadis_comun",
+        name: "Estadística",
+      },
+      {
+        id: "fun_com_merc",
+        name: "Fundamentos de Comunicaciones Integradas de Mercadeo",
+      },
+      {
+        id: "comun_esce",
+        name: "Comunicación Escénica",
+      },
+      {
+        id: "art_audiovisual",
+        name: "Artes Audiovisuales",
+      },
+      {
+        id: "semiotica",
+        name: "Semiótica",
+      },
+      {
+        id: "etic_comun_social",
+        name: "Ética de la Comuncación Social",
+      },
+      {
+        id: "hist_vzla_med2",
+        name: "Historia de Venezuela en los Medios II",
+      },
+      {
+        id: "metod_comun",
+        name: "Metodología",
+      },
+      {
+        id: "proc_edit",
+        name: "Procesos Editoriales"
+      },
+      {
+        id: "periodismos",
+        name: "Periodismos",
+      },
+      {
+        id: "teoria_adin_org",
+        name: "Teorías Administrativas de la Organización",
+      },
+      {
+        id: "fund_guion",
+        name: "Fundamentos de Guión",
+      },
+      {
+        id: "gest_cult",
+        name: "Gestión Cultural",
+      },
+      {
+        id: "reg_jur_comun",
+        name: "Régimen Jurídico de la Comunicación",
+      },
+      {
+        id: "ger_proy",
+        name: "Gerencia de Proyectos",
+      },
+    ]
+  }
 ];
 
 export const subjectDegrees = (subjectID) => {

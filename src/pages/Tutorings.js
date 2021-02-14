@@ -11,7 +11,6 @@ import {
   Avatar,
   LinearProgress,
 } from "@material-ui/core";
-import "./Tutorings.css";
 import { degrees } from "../degrees";
 import Divider from "@material-ui/core/Divider";
 import TutoringIcon from "@material-ui/icons/MenuBook";
@@ -32,7 +31,7 @@ const Tutorings = () => {
   const user = useUser();
   const [tutorings, setTutorings] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [degree, setDegree] = useState(user.degree);
+  const [degree, setDegree] = useState(""); // TODO: AKI
 
   useEffect(() => {
     setLoading(true);
@@ -75,9 +74,15 @@ const Tutorings = () => {
       <div className="divTutoring">
         <Divider />
       </div>
-      {!loading && (
+      {!loading && (!tutorings.length ? (
+        <div>
+          <p>
+            No hay tutorías para mostrar
+          </p>
+        </div>
+      ) :
         /* Lista de tutorías */
-        <div className="cListTutoring">
+        (<div className="cListTutoring">
           <List>
             {tutorings.map((tutoring) => (
               /* Elemento de la lista */
@@ -121,7 +126,7 @@ const Tutorings = () => {
               </ListItem>
             ))}
           </List>
-        </div>
+        </div>)
       )}
     </div>
   );

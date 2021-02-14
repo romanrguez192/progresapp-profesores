@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import titlepc from "../assets/title-loginpc.svg";
-import "./Login.css";
 import {
   TextField,
   Button,

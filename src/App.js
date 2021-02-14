@@ -4,6 +4,15 @@ import {
   unstable_createMuiStrictModeTheme as createMuiTheme,
   ThemeProvider,
 } from "@material-ui/core/styles";
+import "./pages/Login.css";
+import "./pages/Home.css";
+import "./pages/MyTutorings.css";
+import "./pages/SignUp.css";
+import "./pages/TablesPage.css";
+import "./pages/TutoringDetail.css";
+import "./pages/Tutorings.css";
+import "./components/CreateTutoring.css";
+import "./components/NavBar.css";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import NavBar from "./components/NavBar";

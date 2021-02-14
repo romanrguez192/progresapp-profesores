@@ -2,12 +2,14 @@ import React, { useState, useEffect } from "react";
 import MaterialTable from "material-table";
 import AddIcon from "@material-ui/icons/Add";
 import RemoveIcon from "@material-ui/icons/Remove";
-import "./TablesPage.css";
 import { useUser } from "../contexts/UserContext";
 import { getStudents } from "../firebase/functions";
 import { useParams, useHistory } from "react-router-dom";
 import { LinearProgress, Divider } from "@material-ui/core";
 import { degreeName } from "../degrees";
+import Tooltip from "@material-ui/core/Tooltip";
+import Switch from "@material-ui/core/Switch";
+import { toggleIsTutor } from "../firebase/functions";
 
 const StudentsPage = () => {
   const [students, setStudents] = useState([]);
@@ -31,7 +33,6 @@ const StudentsPage = () => {
     return students.map((student) => {
       const newStudent = { ...student };
       newStudent.degree = degreeName(newStudent.degree);
-      newStudent.isTutor = newStudent.isTutor ? "Sí" : "No";
 
       return newStudent;
     });
@@ -54,11 +55,11 @@ const StudentsPage = () => {
       title: "Carrera",
       field: "degree",
     },
-    {
-      title: "Tutor",
-      field: "isTutor",
-    },
   ];
+
+  const changeIsTutor = (student) => {
+    toggleIsTutor(student);
+  };
 
   return (
     <div className="cBackgroundTutoringDetail">
@@ -81,12 +82,13 @@ const StudentsPage = () => {
             options={{
               search: true,
               headerStyle: { fontWeight: "bold" },
-              pageSizeOptions: [5, 10, 20, 25, 30],
+              pageSizeOptions: [10, 20, 30, 40, 50],
+              pageSize: 10,
               emptyRowsWhenPaging: false,
               actionsColumnIndex: -1,
             }}
             localization={{
-              //header: { actions: "Control de asistencia" },
+              header: { actions: "Tutor" },
               toolbar: { searchPlaceholder: "Buscar", searchTooltip: "Buscar" },
               body: {
                 emptyDataSourceMessage: "No hay estudiantes que mostrar",
@@ -101,18 +103,27 @@ const StudentsPage = () => {
                 labelRowsPerPage: "Estudiantes por página:",
               },
             }}
-            // actions={[
-            //   {
-            //     icon: AddIcon,
-            //     tooltip: "Incrementar asistencia",
-            //     //onClick: (event, rowData) => increment(rowData.uid),
-            //   },
-            //   {
-            //     icon: RemoveIcon,
-            //     tooltip: "Disminuir asistencia",
-            //     //onClick: (event, rowData) => decrement(rowData.uid),
-            //   },
-            // ]}
+            actions={[
+              {
+                xd: "LAL",
+              },
+            ]}
+            components={{
+              Action: (props) => (
+                <Tooltip
+                  title={
+                    props.data.isTutor
+                      ? "Desasignar como tutor"
+                      : "Asignar como tutor"
+                  }
+                >
+                  <Switch
+                    checked={props.data.isTutor}
+                    onChange={() => changeIsTutor(props.data)}
+                  />
+                </Tooltip>
+              ),
+            }}
           />
         </div>
       )}

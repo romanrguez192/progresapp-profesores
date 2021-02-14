@@ -26,10 +26,8 @@ export const professorSignUp = async (user) => {
     uid,
     name: user.name,
     idDocument: user.idDocument,
-    degree: user.degree,
     email: user.email,
     phone: user.phone,
-    isTutor: false,
   };
 
   const promise = db.collection("professors").doc(uid).set(data);
@@ -40,7 +38,6 @@ export const professorSignUp = async (user) => {
 export const uploadFile = async (file, path) => {
   const fileRef = storage.ref().child(path);
 
-  // TODO: Tener cuidado con los posibles errores y colocar metadata
   await fileRef.put(file);
   const url = await fileRef.getDownloadURL();
   return url;
@@ -152,8 +149,54 @@ export const getTutorTutorings = (tutorID, func) => {
 };
 
 // Actualizar los datos de una tutoría
-export const updateTutoring = async (tutoringID, newData) => {
-  await db.collection("tutorings").doc(tutoringID).update(newData);
+export const updateTutoring = async (tutoring, newData) => {
+  await db.collection("tutorings").doc(tutoring.id).update(newData);
+
+  const notification = {
+    title: "Cambio en tutoría",
+    message: `Un profesor modificó tu tutoría de ${tutoring.name}`,
+    date: new Date(),
+    read: false,
+  };
+
+  await db
+    .collection("students")
+    .doc(tutoring.tutor.id)
+    .collection("notifications")
+    .add(notification);
+};
+
+// Obtener los notificaciones
+export const getNotifications = (userID, func) => {
+  return db
+    .collection("professors")
+    .doc(userID)
+    .collection("notifications")
+    .orderBy("date", "desc")
+    .onSnapshot((snapshot) => {
+      const notifications = snapshot.docs.map((doc) => {
+        const notification = doc.data();
+        notification.id = doc.id;
+        return notification;
+      });
+      func(notifications);
+    });
+};
+
+export const markAsRead = async (userID) => {
+  const notifications = await db
+    .collection("professors")
+    .doc(userID)
+    .collection("notifications")
+    .get();
+
+  notifications.forEach((doc) => {
+    db.collection("professors")
+      .doc(userID)
+      .collection("notifications")
+      .doc(doc.id)
+      .update({ read: true });
+  });
 };
 
 // Obtener todos los estudiantes
@@ -162,8 +205,14 @@ export const getStudents = (func) => {
     const students = snapshot.docs.map((doc) => {
       const student = doc.data();
       return student;
-    })
+    });
 
     func(students);
-  })
-}
+  });
+};
+
+export const toggleIsTutor = async (student) => {
+  const isTutor = !student.isTutor;
+
+  await db.collection("students").doc(student.uid).update({ isTutor });
+};

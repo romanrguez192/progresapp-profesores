@@ -15,7 +15,6 @@ import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
 import { degreeSubjects } from "../degrees";
 import { useParams } from "react-router-dom";
 import { KeyboardTimePicker } from "@material-ui/pickers";
-import "./CreateTutoring.css";
 import AccessTimeIcon from "@material-ui/icons/AccessTime";
 
 const days = [

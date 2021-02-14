@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import MaterialTable from "material-table";
 import AddIcon from "@material-ui/icons/Add";
 import RemoveIcon from "@material-ui/icons/Remove";
-import "./TablesPage.css";
 import { useUser } from "../contexts/UserContext";
 import { getTutoringById } from "../firebase/functions";
 import { useParams, useHistory } from "react-router-dom";
@@ -69,7 +68,7 @@ const TablesPage = () => {
       }
     });
 
-    await updateTutoring(tutoring.id, { students: tutoring.students });
+    await updateTutoring(tutoring, { students: tutoring.students });
   };
 
   const decrement = async (uid) => {
@@ -79,7 +78,7 @@ const TablesPage = () => {
       }
     });
 
-    await updateTutoring(tutoring.id, { students: tutoring.students });
+    await updateTutoring(tutoring, { students: tutoring.students });
   };
 
   if (loading) {

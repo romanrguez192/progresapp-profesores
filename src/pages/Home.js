@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useUser } from "../contexts/UserContext";
-import "./Home.css";
 import { getStudentTutorings } from "../firebase/functions";
 import { Link } from "react-router-dom";
 import {

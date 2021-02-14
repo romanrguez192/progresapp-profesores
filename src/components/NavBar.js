@@ -9,7 +9,6 @@ import { ReactComponent as BarLogo } from "../assets/bar-logo.svg";
 import BarDarkMode from "@material-ui/icons/Brightness4";
 import DrawerIcon from "@material-ui/icons/Menu";
 import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
-import "./NavBar.css";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
@@ -26,11 +25,14 @@ import Tooltip from "@material-ui/core/Tooltip";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
+import PeopleIcon from "@material-ui/icons/People";
+import { useUser } from "../contexts/UserContext";
 
 function NavBar() {
   const [open, setOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
   const openMenu = Boolean(anchorEl);
+  const user = useUser();
 
   const numerito = 7;
 
@@ -75,17 +77,6 @@ function NavBar() {
             ProgresApp
           </Link>
           <div className="separador1" />
-          <Tooltip title="Notificaciones">
-            <IconButton color="inherit">
-              <Badge
-                color="secondary"
-                badgeContent={numerito}
-                invisible={false}
-              >
-                <NotificationsIcon />
-              </Badge>
-            </IconButton>
-          </Tooltip>
           <Tooltip title="Perfil">
             <IconButton color="inherit" onClick={handleMenu}>
               <AccountCircle />
@@ -106,6 +97,7 @@ function NavBar() {
             open={openMenu}
             onClose={handleCloseMenu}
           >
+            <MenuItem>{user.name}</MenuItem>
             <MenuItem onClick={signOut}>Cerrar sesión</MenuItem>
           </Menu>
         </Toolbar>
@@ -139,21 +131,18 @@ function NavBar() {
             </ListItemIcon>
             <ListItemText primary="Buscar Tutorías" />
           </ListItem>
-          <div className="tutorOptions">
-            <Divider style={{ marginTop: "5pt", marginBottom: "5pt" }} />
-            {/* TODO: Colocar un condicional para que solo le aparezca a tutores */}
-            <ListItem
-              button
-              component={Link}
-              to="/mistutorias"
-              onClick={() => setOpen(false)}
-            >
-              <ListItemIcon>
-                <Assignment />
-              </ListItemIcon>
-              <ListItemText primary="Mis Tutorías" />
-            </ListItem>
-          </div>
+          <ListItem
+            button
+            component={Link}
+            to="/estudiantes"
+            onClick={() => setOpen(false)}
+          >
+            <ListItemIcon>
+              <PeopleIcon />
+            </ListItemIcon>
+            <ListItemText primary="Lista de Estudiantes" />
+          </ListItem>
+          <Divider style={{ marginTop: "5pt", marginBottom: "5pt" }} />
           <div className="cDrawerBottom">
             <ListItem button onClick={() => signOut()}>
               <ListItemIcon>

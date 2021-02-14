@@ -1,8 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import { auth, db } from "../firebase/config";
 import Snackbar from "@material-ui/core/Snackbar";
-import IconButton from "@material-ui/core/IconButton";
-import CloseIcon from "@material-ui/icons/Close";
+import Button from "@material-ui/core/Button";
 
 const UserContext = React.createContext();
 
@@ -64,14 +63,12 @@ export const UserProvider = ({ children }) => {
           onClose={handleCloseSnack}
           message="Estás intentando acceder con una cuenta de estudiante"
           action={
-            <IconButton
-              size="small"
-              aria-label="close"
-              color="inherit"
-              onClick={handleCloseSnack}
-            >
-              <CloseIcon fontSize="small" />
-            </IconButton>
+            // TODO: LINK REAL
+            <a style={{textDecoration: "none"}} href="http://www.google.com">
+			        <Button color="secondary" size="small">
+                Ir a ProgresApp Estudiantes
+              </Button>
+            </a>
           }
         />
     </UserContext.Provider>

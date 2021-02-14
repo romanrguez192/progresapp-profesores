@@ -24,7 +24,6 @@ import ScheduleIcon from "@material-ui/icons/QueryBuilderOutlined";
 import { degrees } from "../degrees";
 import { useParams, useHistory, Link } from "react-router-dom";
 import { format } from "date-fns";
-import "./TutoringDetail.css";
 import StudentsIcon from "@material-ui/icons/PersonOutlined";
 import { faChalkboard } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -101,7 +100,10 @@ const TutoringDetail = () => {
 
   const update = async (data) => {
     try {
-      await updateTutoring(tutoring.id, data);
+      await updateTutoring(tutoring, data);
+      setChangeClassRoom(false);
+      setChangeGroupLink(false);
+      setChangeTime(false);
     } catch (error) {
       console.log(error);
     }

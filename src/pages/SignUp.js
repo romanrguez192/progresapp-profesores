@@ -10,10 +10,8 @@ import {
 } from "@material-ui/core";
 import logo from "../assets/logo.svg";
 import { Visibility, VisibilityOff } from "@material-ui/icons";
-import "./SignUp.css";
 import { professorSignUp } from "../firebase/functions";
 import { Link } from "react-router-dom";
-import { degrees } from "../degrees";
 import Snackbar from "@material-ui/core/Snackbar";
 import CloseIcon from "@material-ui/icons/Close";
 
@@ -25,7 +23,6 @@ const SignUp = () => {
     idDocument: "",
     email: "",
     phone: "",
-    degree: "",
     password: "",
     confirm: "",
   };
@@ -81,9 +78,6 @@ const SignUp = () => {
     }
     if (user.email === "") {
       errorMessages.email = "Ingresa tu correo, por favor";
-    }
-    if (user.degree === "") {
-      errorMessages.degree = "Ingresa tu carrera, por favor";
     }
     if (user.password === "") {
       errorMessages.password =
@@ -175,7 +169,7 @@ const SignUp = () => {
               ></TextField>
             </div>
           </div>
-          {/* TextField del teléfono TODO: Ver si se puede mejorar*/}
+          {/* TextField del teléfono */}
           <div className="tfInfo">
             <TextField
               fullWidth
@@ -186,26 +180,6 @@ const SignUp = () => {
               helperText={errorMessages.phone}
               onChange={(e) => handleChangeText("phone", e.target.value)}
             ></TextField>
-          </div>
-          {/* TextField de la carrera */}
-          <div className="tfInfo">
-            <TextField
-              fullWidth
-              select
-              label="Carrera"
-              variant="outlined"
-              required
-              error={errorMessages.degree !== ""}
-              helperText={errorMessages.degree}
-              onChange={(e) => handleChangeText("degree", e.target.value)}
-              value={user.degree}
-            >
-              {degrees.map((option) => (
-                <MenuItem key={option.id} value={option.id}>
-                  {option.name}
-                </MenuItem>
-              ))}
-            </TextField>
           </div>
           {/* TextField del correo */}
           <div className="tfInfo">

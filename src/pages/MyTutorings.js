@@ -10,7 +10,6 @@ import {
   ListItemAvatar,
   Avatar,
 } from "@material-ui/core";
-import "./MyTutorings.css";
 import { Dialog, DialogTitle, DialogContent } from "@material-ui/core";
 import CreateTutoring from "../components/CreateTutoring";
 import Fab from "@material-ui/core/Fab";
