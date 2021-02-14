@@ -49,7 +49,7 @@ const Home = () => {
       </div>
       {/* Si no está inscrito en nada */}
       {!loading && !tutorings.length && (
-        <div>
+        <div className="cHomeMssg">
           <p>
             Todavía no te has inscrito en ninguna tutoría. ¡Ve a{" "}
             <em>Buscar Tutorías</em> para inscribirte en una!

@@ -1,63 +1,66 @@
 .cHomeBackground {
-  width: 100vw;
-  text-align: center;
-  justify-content: center;
-  align-content: center;
-  align-items: center;
+	text-align: center;
+	justify-content: center;
+	align-content: center;
+	align-items: center;
+}
+
+.cHomeMssg {
+	padding: 18px;
 }
 
 .cTitleHome {
-  padding-top: 5pt;
+	padding-top: 5pt;
 }
 
 .cTitleHome h1 {
-  font-family: "Quicksand";
-  color: #3c3b3e;
-  font-weight: bold;
+	font-family: 'Quicksand';
+	color: #3c3b3e;
+	font-weight: bold;
 }
 
 #create-dialog-title {
-  padding-bottom: 0px;
-  margin-bottom: 0px;
+	padding-bottom: 0px;
+	margin-bottom: 0px;
 }
 
 /* PC */
 @media screen and (min-width: 600px) {
-  .cListHomeTutorings,
-  .divHomeTutorings {
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 5%;
-    padding-right: 5%;
-    max-width: 800px;
-  }
+	.cListHomeTutorings,
+	.divHomeTutorings {
+		margin-left: auto;
+		margin-right: auto;
+		padding-left: 5%;
+		padding-right: 5%;
+		max-width: 800px;
+	}
 
-  .cTitleHome h1 {
-    font-size: 30pt;
-  }
+	.cTitleHome h1 {
+		font-size: 30pt;
+	}
 
-  .divHomeTutorings {
-    padding-top: 2vh;
-    padding-bottom: 3vh;
-  }
+	.divHomeTutorings {
+		padding-top: 2vh;
+		padding-bottom: 3vh;
+	}
 }
 
 /* Telefonos */
 @media only screen and (max-width: 600px) {
-  .cTitleHome h1 {
-    font-size: 25pt;
-  }
-  .cTitleHome p {
-    font-size: 20pt;
-  }
+	.cTitleHome h1 {
+		font-size: 25pt;
+	}
+	.cTitleHome p {
+		font-size: 20pt;
+	}
 
-  .cListHomeTutorings,
-  .divHomeTutorings {
-    padding-left: 5vw;
-    padding-right: 5vw;
-  }
-  .divHomeTutorings {
-    padding-top: 2vh;
-    padding-bottom: 2vh;
-  }
+	.cListHomeTutorings,
+	.divHomeTutorings {
+		padding-left: 5vw;
+		padding-right: 5vw;
+	}
+	.divHomeTutorings {
+		padding-top: 2vh;
+		padding-bottom: 2vh;
+	}
 }
