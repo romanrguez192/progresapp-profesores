@@ -54,23 +54,26 @@ export const UserProvider = ({ children }) => {
     <UserContext.Provider value={user}>
       {!loading && children}
       <Snackbar
-          anchorOrigin={{
-            vertical: "bottom",
-            horizontal: "left",
-          }}
-          open={wrongProgresApp}
-          autoHideDuration={6000}
-          onClose={handleCloseSnack}
-          message="Estás intentando acceder con una cuenta de estudiante"
-          action={
-            // TODO: LINK REAL
-            <a style={{textDecoration: "none"}} href="http://www.google.com">
-			        <Button color="secondary" size="small">
-                Ir a ProgresApp Estudiantes
-              </Button>
-            </a>
-          }
-        />
+        anchorOrigin={{
+          vertical: "bottom",
+          horizontal: "left",
+        }}
+        open={wrongProgresApp}
+        autoHideDuration={6000}
+        onClose={handleCloseSnack}
+        message="Estás intentando acceder con una cuenta de estudiante"
+        action={
+          // TODO: LINK REAL
+          <a
+            style={{ textDecoration: "none" }}
+            href="https://progresapp.web.app/"
+          >
+            <Button color="secondary" size="small">
+              Ir a ProgresApp Estudiantes
+            </Button>
+          </a>
+        }
+      />
     </UserContext.Provider>
   );
 };
