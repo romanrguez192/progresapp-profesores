@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "progresapp-2dd30"
+  },
+  "targets": {
+    "progresapp-2dd30": {
+      "hosting": {
+        "profes": [
+          "progresapp-profesores"
+        ]
+      }
+    }
+  }
+}
