@@ -1,5 +1,5 @@
 import { auth, db, storage } from "./config";
-import { subjectDegrees, subjectName } from "../degrees.js";
+import { subjectDegrees, subjectName } from "../utils/degrees";
 import { add } from "date-fns";
 
 // Inicio de sesión de profesores con correo y contraseña
@@ -15,10 +15,7 @@ export const signOut = () => {
 
 // Registro de profesores
 export const professorSignUp = async (user) => {
-  const response = await auth.createUserWithEmailAndPassword(
-    user.email,
-    user.password
-  );
+  const response = await auth.createUserWithEmailAndPassword(user.email, user.password);
 
   const uid = response.user.uid;
 
@@ -159,11 +156,7 @@ export const updateTutoring = async (tutoring, newData) => {
     read: false,
   };
 
-  await db
-    .collection("students")
-    .doc(tutoring.tutor.id)
-    .collection("notifications")
-    .add(notification);
+  await db.collection("students").doc(tutoring.tutor.id).collection("notifications").add(notification);
 };
 
 // Obtener los notificaciones
@@ -184,18 +177,10 @@ export const getNotifications = (userID, func) => {
 };
 
 export const markAsRead = async (userID) => {
-  const notifications = await db
-    .collection("professors")
-    .doc(userID)
-    .collection("notifications")
-    .get();
+  const notifications = await db.collection("professors").doc(userID).collection("notifications").get();
 
   notifications.forEach((doc) => {
-    db.collection("professors")
-      .doc(userID)
-      .collection("notifications")
-      .doc(doc.id)
-      .update({ read: true });
+    db.collection("professors").doc(userID).collection("notifications").doc(doc.id).update({ read: true });
   });
 };
 
@@ -218,16 +203,10 @@ export const toggleIsTutor = async (student) => {
 
   const notification = {
     title: isTutor ? "Eres tutor" : "Ya no eres tutor",
-    message: isTutor
-      ? "Fuiste asignado como tutor"
-      : "Fuiste desasignado como tutor",
+    message: isTutor ? "Fuiste asignado como tutor" : "Fuiste desasignado como tutor",
     date: new Date(),
     read: false,
   };
 
-  await db
-    .collection("students")
-    .doc(student.uid)
-    .collection("notifications")
-    .add(notification);
+  await db.collection("students").doc(student.uid).collection("notifications").add(notification);
 };

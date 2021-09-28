@@ -63,11 +63,7 @@ export const UserProvider = ({ children }) => {
         onClose={handleCloseSnack}
         message="Estás intentando acceder con una cuenta de estudiante"
         action={
-          // TODO: LINK REAL
-          <a
-            style={{ textDecoration: "none" }}
-            href="https://progresapp.web.app/"
-          >
+          <a style={{ textDecoration: "none" }} href="https://progresapp.web.app/">
             <Button color="secondary" size="small">
               Ir a ProgresApp Estudiantes
             </Button>

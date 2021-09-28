@@ -1,12 +1,6 @@
 import React, { useState } from "react";
 import titlepc from "../assets/title-loginpc.svg";
-import {
-  TextField,
-  Button,
-  InputAdornment,
-  Backdrop,
-  CircularProgress,
-} from "@material-ui/core";
+import { TextField, Button, InputAdornment, Backdrop, CircularProgress } from "@material-ui/core";
 import { Visibility, VisibilityOff } from "@material-ui/icons";
 import { professorLogin } from "../firebase/functions";
 import { Link } from "react-router-dom";
@@ -26,6 +20,7 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [connectionError, setConnectionError] = useState(false);
+  const [manyRequestsError, setManyRequestsError] = useState(false);
 
   // Función llamada al cambiar el texto del input
   const handleChangeText = (name, value) => {
@@ -49,10 +44,13 @@ const Login = () => {
     }
 
     setConnectionError(false);
+    setManyRequestsError(false);
   };
 
   // Función que inicia sesión al clickear el botón
-  const login = async () => {
+  const login = async (e) => {
+    e.preventDefault();
+
     const errorMessages = { ...initialState };
 
     if (user.email.trim() === "") {
@@ -76,14 +74,14 @@ const Login = () => {
       if (error.code === "auth/invalid-email") {
         errorMessages.email = "Ingresa una dirección de correo válida";
       } else if (error.code === "auth/user-not-found") {
-        errorMessages.email =
-          "No hay usuarios con este correo, intenta de nuevo";
+        errorMessages.email = "No hay usuarios con este correo, intenta de nuevo";
       } else if (error.code === "auth/wrong-password") {
         errorMessages.password = "Contraseña incorrecta, intenta nuevamente";
+      } else if (error.code === "auth/too-many-requests") {
+        setManyRequestsError(true);
       } else {
         setConnectionError(true);
       }
-
       setErrorMessages(errorMessages);
       setLoading(false);
     }
@@ -98,53 +96,55 @@ const Login = () => {
         <div className="cHeader">
           <img className="imgLogo" src={titlepc} alt="logo" />
         </div>
-        {/* Inputs */}
-        <div className="cInputs">
-          {/* TextField del correo */}
-          <div className="tfMail">
-            <TextField
-              fullWidth
-              label="Correo"
-              variant="outlined"
-              type="email"
-              error={errorMessages.email !== ""}
-              helperText={errorMessages.email}
-              onChange={(e) => handleChangeText("email", e.target.value)}
-            ></TextField>
+        <form onSubmit={login}>
+          {/* Inputs */}
+          <div className="cInputs">
+            {/* TextField del correo */}
+            <div className="tfMail">
+              <TextField
+                fullWidth
+                label="Correo"
+                variant="outlined"
+                type="email"
+                error={errorMessages.email !== ""}
+                helperText={errorMessages.email}
+                onChange={(e) => handleChangeText("email", e.target.value)}
+              ></TextField>
+            </div>
+            {/* TextField de la contraseña */}
+            <div className="tfPassword">
+              <TextField
+                fullWidth
+                label="Contraseña"
+                variant="outlined"
+                type={showPassword ? "text" : "password"}
+                error={errorMessages.password !== ""}
+                helperText={errorMessages.password}
+                onChange={(e) => handleChangeText("password", e.target.value)}
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <IconButton
+                        aria-label="toggle password visibility"
+                        onClick={handleClickShowPassword}
+                        onMouseDown={handleMouseDownPassword}
+                        edge="end"
+                      >
+                        {showPassword ? <Visibility /> : <VisibilityOff />}
+                      </IconButton>
+                    </InputAdornment>
+                  ),
+                }}
+              ></TextField>
+            </div>
           </div>
-          {/* TextField de la contraseña */}
-          <div className="tfPassword">
-            <TextField
-              fullWidth
-              label="Contraseña"
-              variant="outlined"
-              type={showPassword ? "text" : "password"}
-              error={errorMessages.password !== ""}
-              helperText={errorMessages.password}
-              onChange={(e) => handleChangeText("password", e.target.value)}
-              InputProps={{
-                endAdornment: (
-                  <InputAdornment position="end">
-                    <IconButton
-                      aria-label="toggle password visibility"
-                      onClick={handleClickShowPassword}
-                      onMouseDown={handleMouseDownPassword}
-                      edge="end"
-                    >
-                      {showPassword ? <Visibility /> : <VisibilityOff />}
-                    </IconButton>
-                  </InputAdornment>
-                ),
-              }}
-            ></TextField>
+          {/* Boton para ingresar */}
+          <div className="bLogin">
+            <Button variant="contained" type="submit" fullWidth color="primary">
+              Ingresar
+            </Button>
           </div>
-        </div>
-        {/* Boton para ingresar */}
-        <div className="bLogin">
-          <Button variant="contained" fullWidth color="primary" onClick={login}>
-            Ingresar
-          </Button>
-        </div>
+        </form>
         {/* Botón que redirige al SignUp */}
         <div className="clSignUp">
           <Link to="/signup" className="lSignUp">
@@ -159,17 +159,12 @@ const Login = () => {
             vertical: "bottom",
             horizontal: "left",
           }}
-          open={connectionError}
+          open={connectionError || manyRequestsError}
           autoHideDuration={6000}
           onClose={handleCloseSnack}
-          message="Error de conexión"
+          message={connectionError ? "Error de conexión" : "Cuenta bloqueada temporalmente"}
           action={
-            <IconButton
-              size="small"
-              aria-label="close"
-              color="inherit"
-              onClick={handleCloseSnack}
-            >
+            <IconButton size="small" aria-label="close" color="inherit" onClick={handleCloseSnack}>
               <CloseIcon fontSize="small" />
             </IconButton>
           }

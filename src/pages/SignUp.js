@@ -1,13 +1,5 @@
 import React, { useState } from "react";
-import {
-  TextField,
-  Button,
-  InputAdornment,
-  IconButton,
-  MenuItem,
-  Backdrop,
-  CircularProgress,
-} from "@material-ui/core";
+import { TextField, Button, InputAdornment, IconButton, MenuItem, Backdrop, CircularProgress } from "@material-ui/core";
 import logo from "../assets/logo.svg";
 import { Visibility, VisibilityOff } from "@material-ui/icons";
 import { professorSignUp } from "../firebase/functions";
@@ -59,7 +51,9 @@ const SignUp = () => {
   };
 
   // Función de registro del estudiante al clickear el botón
-  const signUp = async () => {
+  const signUp = async (e) => {
+    e.preventDefault();
+
     const errorMessages = { ...initialData };
 
     // Borra los espacios al inicio y al final
@@ -80,8 +74,7 @@ const SignUp = () => {
       errorMessages.email = "Ingresa tu correo, por favor";
     }
     if (user.password === "") {
-      errorMessages.password =
-        "Ingresa una contraseña de al menos 6 caracteres, por favor";
+      errorMessages.password = "Ingresa una contraseña de al menos 6 caracteres, por favor";
     }
     if (user.confirm === "") {
       errorMessages.confirm = "Repite tu contraseña, por favor";
@@ -97,8 +90,7 @@ const SignUp = () => {
 
     // Verifica que las contraseñas coincidan
     if (user.password !== user.confirm) {
-      errorMessages.confirm =
-        "Las contraseñas no coinciden, vuelve a intentarlo";
+      errorMessages.confirm = "Las contraseñas no coinciden, vuelve a intentarlo";
       setErrorMessages(errorMessages);
       return;
     }
@@ -109,14 +101,11 @@ const SignUp = () => {
       await professorSignUp(user);
     } catch (error) {
       if (error.code === "auth/invalid-email") {
-        errorMessages.email =
-          "Ingresa una dirección de correo electrónico válida";
+        errorMessages.email = "Ingresa una dirección de correo electrónico válida";
       } else if (error.code === "auth/email-already-in-use") {
-        errorMessages.email =
-          "Ya existe un usuario con esta dirección de correo, intenta nuevamente";
+        errorMessages.email = "Ya existe un usuario con esta dirección de correo, intenta nuevamente";
       } else if (error.code === "auth/weak-password") {
-        errorMessages.password =
-          "Ingresa una contraseña de al menos 6 caracteres, por favor";
+        errorMessages.password = "Ingresa una contraseña de al menos 6 caracteres, por favor";
       } else {
         setConnectionError(true);
       }
@@ -141,125 +130,122 @@ const SignUp = () => {
             <h1>Regístrate en ProgresApp</h1>
           </div>
         </div>
-        <div className="cTextFields">
-          <div className="cNameAndId">
-            {/* TextField del nombre */}
-            <div className="tfName">
+        <form onSubmit={signUp}>
+          <div className="cTextFields">
+            <div className="cNameAndId">
+              {/* TextField del nombre */}
+              <div className="tfName">
+                <TextField
+                  fullWidth
+                  label="Nombre y Apellido"
+                  variant="outlined"
+                  required
+                  error={errorMessages.name !== ""}
+                  helperText={errorMessages.name}
+                  onChange={(e) => handleChangeText("name", e.target.value)}
+                ></TextField>
+              </div>
+              {/* TextField de la cédula */}
+              <div className="tfId">
+                <TextField
+                  fullWidth
+                  label="Cédula"
+                  placeholder="Ej: 28.270.835"
+                  variant="outlined"
+                  required
+                  error={errorMessages.idDocument !== ""}
+                  helperText={errorMessages.idDocument}
+                  onChange={(e) => handleChangeText("idDocument", e.target.value)}
+                ></TextField>
+              </div>
+            </div>
+            {/* TextField del teléfono */}
+            <div className="tfInfo">
               <TextField
                 fullWidth
-                label="Nombre y Apellido"
+                label="Teléfono"
+                placeholder="Ej: 0412-9216791"
                 variant="outlined"
-                required
-                error={errorMessages.name !== ""}
-                helperText={errorMessages.name}
-                onChange={(e) => handleChangeText("name", e.target.value)}
+                error={errorMessages.phone !== ""}
+                helperText={errorMessages.phone}
+                onChange={(e) => handleChangeText("phone", e.target.value)}
               ></TextField>
             </div>
-            {/* TextField de la cédula */}
-            <div className="tfId">
+            {/* TextField del correo */}
+            <div className="tfInfo">
               <TextField
                 fullWidth
-                label="Cédula"
-                placeholder="Ej: 28.270.835"
+                label="Correo"
                 variant="outlined"
+                type="email"
                 required
-                error={errorMessages.idDocument !== ""}
-                helperText={errorMessages.idDocument}
-                onChange={(e) => handleChangeText("idDocument", e.target.value)}
+                error={errorMessages.email !== ""}
+                helperText={errorMessages.email}
+                onChange={(e) => handleChangeText("email", e.target.value)}
+              ></TextField>
+            </div>
+            {/* TextField de la contraseña */}
+            <div className="tfInfo">
+              <TextField
+                fullWidth
+                label="Contraseña"
+                variant="outlined"
+                type={showPassword ? "text" : "password"}
+                required
+                error={errorMessages.password !== ""}
+                helperText={errorMessages.password}
+                onChange={(e) => handleChangeText("password", e.target.value)}
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <IconButton
+                        aria-label="toggle password visibility"
+                        onClick={handleClickShowPassword}
+                        onMouseDown={handleMouseDownPassword}
+                        edge="end"
+                      >
+                        {showPassword ? <Visibility /> : <VisibilityOff />}
+                      </IconButton>
+                    </InputAdornment>
+                  ),
+                }}
+              ></TextField>
+            </div>
+            {/* TextField de repetir contraseña */}
+            <div className="tfInfo">
+              <TextField
+                fullWidth
+                label="Repetir Contraseña"
+                variant="outlined"
+                type={showPassword ? "text" : "password"}
+                required
+                error={errorMessages.confirm !== ""}
+                helperText={errorMessages.confirm}
+                onChange={(e) => handleChangeText("confirm", e.target.value)}
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <IconButton
+                        aria-label="toggle password visibility"
+                        onClick={handleClickShowPassword}
+                        onMouseDown={handleMouseDownPassword}
+                        edge="end"
+                      >
+                        {showPassword ? <Visibility /> : <VisibilityOff />}
+                      </IconButton>
+                    </InputAdornment>
+                  ),
+                }}
               ></TextField>
             </div>
           </div>
-          {/* TextField del teléfono */}
-          <div className="tfInfo">
-            <TextField
-              fullWidth
-              label="Teléfono"
-              placeholder="Ej: 0412-9216791"
-              variant="outlined"
-              error={errorMessages.phone !== ""}
-              helperText={errorMessages.phone}
-              onChange={(e) => handleChangeText("phone", e.target.value)}
-            ></TextField>
+          {/* Boton para registrarse */}
+          <div className="bSignUp">
+            <Button variant="contained" type="submit" fullWidth color="primary">
+              Registrarse
+            </Button>
           </div>
-          {/* TextField del correo */}
-          <div className="tfInfo">
-            <TextField
-              fullWidth
-              label="Correo"
-              variant="outlined"
-              type="email"
-              required
-              error={errorMessages.email !== ""}
-              helperText={errorMessages.email}
-              onChange={(e) => handleChangeText("email", e.target.value)}
-            ></TextField>
-          </div>
-          {/* TextField de la contraseña */}
-          <div className="tfInfo">
-            <TextField
-              fullWidth
-              label="Contraseña"
-              variant="outlined"
-              type={showPassword ? "text" : "password"}
-              required
-              error={errorMessages.password !== ""}
-              helperText={errorMessages.password}
-              onChange={(e) => handleChangeText("password", e.target.value)}
-              InputProps={{
-                endAdornment: (
-                  <InputAdornment position="end">
-                    <IconButton
-                      aria-label="toggle password visibility"
-                      onClick={handleClickShowPassword}
-                      onMouseDown={handleMouseDownPassword}
-                      edge="end"
-                    >
-                      {showPassword ? <Visibility /> : <VisibilityOff />}
-                    </IconButton>
-                  </InputAdornment>
-                ),
-              }}
-            ></TextField>
-          </div>
-          {/* TextField de repetir contraseña */}
-          <div className="tfInfo">
-            <TextField
-              fullWidth
-              label="Repetir Contraseña"
-              variant="outlined"
-              type={showPassword ? "text" : "password"}
-              required
-              error={errorMessages.confirm !== ""}
-              helperText={errorMessages.confirm}
-              onChange={(e) => handleChangeText("confirm", e.target.value)}
-              InputProps={{
-                endAdornment: (
-                  <InputAdornment position="end">
-                    <IconButton
-                      aria-label="toggle password visibility"
-                      onClick={handleClickShowPassword}
-                      onMouseDown={handleMouseDownPassword}
-                      edge="end"
-                    >
-                      {showPassword ? <Visibility /> : <VisibilityOff />}
-                    </IconButton>
-                  </InputAdornment>
-                ),
-              }}
-            ></TextField>
-          </div>
-        </div>
-        {/* Boton para registrarse */}
-        <div className="bSignUp">
-          <Button
-            variant="contained"
-            fullWidth
-            color="primary"
-            onClick={signUp}
-          >
-            Registrarse
-          </Button>
-        </div>
+        </form>
         {/* Botón que redirige al Login */}
         <div className="clLogin">
           <Link to="/login" className="lLogin">
@@ -279,12 +265,7 @@ const SignUp = () => {
           onClose={handleCloseSnack}
           message="Error de conexión"
           action={
-            <IconButton
-              size="small"
-              aria-label="close"
-              color="inherit"
-              onClick={handleCloseSnack}
-            >
+            <IconButton size="small" aria-label="close" color="inherit" onClick={handleCloseSnack}>
               <CloseIcon fontSize="small" />
             </IconButton>
           }

@@ -11,7 +11,7 @@ import {
   Avatar,
   LinearProgress,
 } from "@material-ui/core";
-import { degrees } from "../degrees";
+import { degrees } from "../utils/degrees";
 import Divider from "@material-ui/core/Divider";
 import TutoringIcon from "@material-ui/icons/MenuBook";
 import { Link } from "react-router-dom";

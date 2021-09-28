@@ -21,7 +21,7 @@ import {
   ListItemAvatar,
 } from "@material-ui/core";
 import ScheduleIcon from "@material-ui/icons/QueryBuilderOutlined";
-import { degrees } from "../degrees";
+import { degrees } from "../utils/degrees";
 import { useParams, useHistory, Link } from "react-router-dom";
 import { format } from "date-fns";
 import StudentsIcon from "@material-ui/icons/PersonOutlined";

@@ -6,7 +6,7 @@ import { useUser } from "../contexts/UserContext";
 import { getTutoringById } from "../firebase/functions";
 import { useParams, useHistory } from "react-router-dom";
 import { LinearProgress, Divider } from "@material-ui/core";
-import { degreeName } from "../degrees";
+import { degreeName } from "../utils/degrees";
 import { updateTutoring } from "../firebase/functions";
 
 const TablesPage = () => {

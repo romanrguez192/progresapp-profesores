@@ -1,9 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Switch } from "react-router-dom";
-import {
-  unstable_createMuiStrictModeTheme as createMuiTheme,
-  ThemeProvider,
-} from "@material-ui/core/styles";
+import { unstable_createMuiStrictModeTheme as createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import "./pages/Login.css";
 import "./pages/Home.css";
 import "./pages/MyTutorings.css";
@@ -17,6 +14,7 @@ import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import NavBar from "./components/NavBar";
 import Home from "./pages/Home";
+import About from "./pages/About";
 import Tutorings from "./pages/Tutorings";
 import TutoringDetail from "./pages/TutoringDetail";
 import { UserProvider } from "./contexts/UserContext";
@@ -90,6 +88,11 @@ function App() {
                 <CustomRoute exact path="/" auth={true}>
                   <NavBar />
                   <Home />
+                </CustomRoute>
+                {/* Página de información */}
+                <CustomRoute path="/about" auth>
+                  <NavBar />
+                  <About />
                 </CustomRoute>
                 {/* Página de lista de tutorías */}
                 <CustomRoute exact path="/tutorias" auth={true}>

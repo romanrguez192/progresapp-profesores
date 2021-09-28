@@ -27,14 +27,13 @@ import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
 import PeopleIcon from "@material-ui/icons/People";
 import { useUser } from "../contexts/UserContext";
+import InfoIcon from "@material-ui/icons/Info";
 
 function NavBar() {
   const [open, setOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
   const openMenu = Boolean(anchorEl);
   const user = useUser();
-
-  const numerito = 7;
 
   const handleDrawer = () => {
     setOpen(true);
@@ -50,25 +49,12 @@ function NavBar() {
 
   return (
     <>
-      <AppBar
-        position="sticky"
-        style={{ backgroundImage: `url(${Background})` }}
-      >
+      <AppBar position="sticky" style={{ backgroundImage: `url(${Background})` }}>
         <Toolbar>
-          <IconButton
-            color="inherit"
-            style={{ marginRight: "5pt" }}
-            onClick={handleDrawer}
-          >
+          <IconButton color="inherit" style={{ marginRight: "5pt" }} onClick={handleDrawer}>
             <DrawerIcon />
           </IconButton>
-          <IconButton
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            component={Link}
-            to="/"
-          >
+          <IconButton edge="start" color="inherit" aria-label="menu" component={Link} to="/">
             <SvgIcon>
               <BarLogo />
             </SvgIcon>
@@ -102,41 +88,27 @@ function NavBar() {
           </Menu>
         </Toolbar>
       </AppBar>
-      <SwipeableDrawer
-        anchor="left"
-        open={open}
-        onOpen={() => setOpen(true)}
-        onClose={() => setOpen(false)}
-      >
+      <SwipeableDrawer anchor="left" open={open} onOpen={() => setOpen(true)} onClose={() => setOpen(false)}>
         <div className="drawerContainer">
-          <ListItem
-            button
-            component={Link}
-            to="/"
-            onClick={() => setOpen(false)}
-          >
+          <ListItem button component={Link} to="/" onClick={() => setOpen(false)}>
             <ListItemIcon>
               <HomeIcon />
             </ListItemIcon>
             <ListItemText primary="Inicio" />
           </ListItem>
-          <ListItem
-            button
-            component={Link}
-            to="/tutorias"
-            onClick={() => setOpen(false)}
-          >
+          <ListItem button component={Link} to="/about" onClick={() => setOpen(false)}>
+            <ListItemIcon>
+              <InfoIcon />
+            </ListItemIcon>
+            <ListItemText primary="Acerca De" />
+          </ListItem>
+          <ListItem button component={Link} to="/tutorias" onClick={() => setOpen(false)}>
             <ListItemIcon>
               <SearchIcon />
             </ListItemIcon>
             <ListItemText primary="Buscar Tutorías" />
           </ListItem>
-          <ListItem
-            button
-            component={Link}
-            to="/estudiantes"
-            onClick={() => setOpen(false)}
-          >
+          <ListItem button component={Link} to="/estudiantes" onClick={() => setOpen(false)}>
             <ListItemIcon>
               <PeopleIcon />
             </ListItemIcon>

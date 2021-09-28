@@ -1,10 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useUser } from "../contexts/UserContext";
-import {
-  getTutoringById,
-  joinTutoring,
-  updateTutoring,
-} from "../firebase/functions";
+import { getTutoringById, joinTutoring, updateTutoring } from "../firebase/functions";
 import {
   Button,
   TextField,
@@ -24,7 +20,7 @@ import {
   ListItemAvatar,
 } from "@material-ui/core";
 import ScheduleIcon from "@material-ui/icons/QueryBuilderOutlined";
-import { degrees } from "../degrees";
+import { degrees } from "../utils/degrees";
 import { useParams, useHistory } from "react-router-dom";
 import { format } from "date-fns";
 import StudentsIcon from "@material-ui/icons/PersonOutlined";
@@ -33,15 +29,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { LogoWhatsapp } from "react-ionicons";
 import ContactIcon from "@material-ui/icons/MailOutline";
 
-const days = [
-  "Lunes",
-  "Martes",
-  "Miércoles",
-  "Juéves",
-  "Viernes",
-  "Sábado",
-  "Domingo",
-];
+const days = ["Lunes", "Martes", "Miércoles", "Juéves", "Viernes", "Sábado", "Domingo"];
 
 const TutoringDetail = () => {
   const [tutoring, setTutoring] = useState(null);
@@ -149,17 +137,13 @@ const TutoringDetail = () => {
                     <ScheduleIcon style={{ color: "#fca976" }} />
                   </Avatar>
                 </ListItemAvatar>
-                <Divider
-                  orientation="vertical"
-                  flexItem
-                  style={{ marginRight: "7pt" }}
-                />
+                <Divider orientation="vertical" flexItem style={{ marginRight: "7pt" }} />
                 <ListItemText
                   primary="Horario"
-                  secondary={`${days[tutoring.day]} ${format(
-                    tutoring.startTime,
+                  secondary={`${days[tutoring.day]} ${format(tutoring.startTime, "p")} - ${format(
+                    tutoring.endingTime,
                     "p"
-                  )} - ${format(tutoring.endingTime, "p")}`}
+                  )}`}
                   secondaryTypographyProps={{ align: "left" }}
                 />
               </ListItem>
@@ -179,11 +163,7 @@ const TutoringDetail = () => {
                     <StudentsIcon style={{ color: "#B39490" }} />
                   </Avatar>
                 </ListItemAvatar>
-                <Divider
-                  orientation="vertical"
-                  flexItem
-                  style={{ marginRight: "7pt" }}
-                />
+                <Divider orientation="vertical" flexItem style={{ marginRight: "7pt" }} />
                 <ListItemText
                   primary={belongs() ? "Ver estudiantes" : "Estudiantes"}
                   secondary={`${tutoring.students.length}/15`}
@@ -201,17 +181,10 @@ const TutoringDetail = () => {
               >
                 <ListItemAvatar>
                   <Avatar style={{ backgroundColor: "#fb86bb40" }}>
-                    <FontAwesomeIcon
-                      icon={faChalkboard}
-                      style={{ color: "#fb86bb" }}
-                    />
+                    <FontAwesomeIcon icon={faChalkboard} style={{ color: "#fb86bb" }} />
                   </Avatar>
                 </ListItemAvatar>
-                <Divider
-                  orientation="vertical"
-                  flexItem
-                  style={{ marginRight: "7pt" }}
-                />
+                <Divider orientation="vertical" flexItem style={{ marginRight: "7pt" }} />
                 <ListItemText
                   primary="Aula"
                   secondary={tutoring.classRoom}
@@ -234,11 +207,7 @@ const TutoringDetail = () => {
                         <LogoWhatsapp color="#25d366" />
                       </Avatar>
                     </ListItemAvatar>
-                    <Divider
-                      orientation="vertical"
-                      flexItem
-                      style={{ marginRight: "7pt" }}
-                    />
+                    <Divider orientation="vertical" flexItem style={{ marginRight: "7pt" }} />
                     <ListItemText
                       primary="Link del Grupo"
                       secondary={
@@ -272,11 +241,7 @@ const TutoringDetail = () => {
                         <ContactIcon style={{ color: "#d3485a" }} />
                       </Avatar>
                     </ListItemAvatar>
-                    <Divider
-                      orientation="vertical"
-                      flexItem
-                      style={{ marginRight: "7pt" }}
-                    />
+                    <Divider orientation="vertical" flexItem style={{ marginRight: "7pt" }} />
                     <ListItemText
                       primary="Contactar al tutor"
                       secondary={
@@ -287,39 +252,23 @@ const TutoringDetail = () => {
                       secondaryTypographyProps={{ align: "left" }}
                     />
                   </ListItem>
-                  <Button
-                    variant="contained"
-                    fullWidth
-                    color="secondary"
-                    onClick={leave}
-                  >
+                  <Button variant="contained" fullWidth color="secondary" onClick={leave}>
                     Abandonar Tutoría
                   </Button>
                 </div>
               ) : (
                 <div>
-                  <Button
-                    variant="contained"
-                    fullWidth
-                    color="primary"
-                    onClick={join}
-                  >
+                  <Button variant="contained" fullWidth color="primary" onClick={join}>
                     Unirse
                   </Button>
                 </div>
               )}
             </List>
-            <Dialog
-              open={showStudents}
-              onClose={() => setShowStudents(false)}
-              aria-labelledby="form-dialog-title"
-            >
+            <Dialog open={showStudents} onClose={() => setShowStudents(false)} aria-labelledby="form-dialog-title">
               <DialogTitle id="form-dialog-title">Estudiantes</DialogTitle>
               <DialogContent>
                 {tutoring.students.map((student) => (
-                  <DialogContentText key={student.name}>
-                    {student.name}
-                  </DialogContentText>
+                  <DialogContentText key={student.name}>{student.name}</DialogContentText>
                 ))}
               </DialogContent>
             </Dialog>

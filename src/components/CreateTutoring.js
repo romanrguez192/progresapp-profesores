@@ -12,7 +12,7 @@ import {
   IconButton,
 } from "@material-ui/core";
 import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
-import { degreeSubjects } from "../degrees";
+import { degreeSubjects } from "../utils/degrees";
 import { useParams } from "react-router-dom";
 import { KeyboardTimePicker } from "@material-ui/pickers";
 import AccessTimeIcon from "@material-ui/icons/AccessTime";
@@ -183,24 +183,12 @@ const CreateTutoring = ({ close }) => {
         ></TextField>
       </div>
       <div className="cBCreateTutoring">
-        <Button
-          size="medium"
-          variant="contained"
-          fullWidth
-          color="primary"
-          onClick={publish}
-        >
+        <Button size="medium" variant="contained" fullWidth color="primary" onClick={publish}>
           Publicar Tutoría
         </Button>
       </div>
       <div className="cBCancelTutoring">
-        <Button
-          size="medium"
-          variant="contained"
-          fullWidth
-          color="secondary"
-          onClick={close}
-        >
+        <Button size="medium" variant="contained" fullWidth color="secondary" onClick={close}>
           Cancelar
         </Button>
       </div>

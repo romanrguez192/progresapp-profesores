@@ -6,7 +6,7 @@ import { useUser } from "../contexts/UserContext";
 import { getStudents } from "../firebase/functions";
 import { useParams, useHistory } from "react-router-dom";
 import { LinearProgress, Divider } from "@material-ui/core";
-import { degreeName } from "../degrees";
+import { degreeName } from "../utils/degrees";
 import Tooltip from "@material-ui/core/Tooltip";
 import Switch from "@material-ui/core/Switch";
 import { toggleIsTutor } from "../firebase/functions";
@@ -110,17 +110,8 @@ const StudentsPage = () => {
             ]}
             components={{
               Action: (props) => (
-                <Tooltip
-                  title={
-                    props.data.isTutor
-                      ? "Desasignar como tutor"
-                      : "Asignar como tutor"
-                  }
-                >
-                  <Switch
-                    checked={props.data.isTutor}
-                    onChange={() => changeIsTutor(props.data)}
-                  />
+                <Tooltip title={props.data.isTutor ? "Desasignar como tutor" : "Asignar como tutor"}>
+                  <Switch checked={props.data.isTutor} onChange={() => changeIsTutor(props.data)} />
                 </Tooltip>
               ),
             }}
